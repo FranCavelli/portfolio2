@@ -10,12 +10,12 @@ export default function Lentes(){
         const contenedor = document.getElementById('contenedor3D');
 
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(30, contenedor.offsetWidth / contenedor.offsetHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(28, contenedor.offsetWidth / contenedor.offsetHeight, 0.1, 1000);
         camera.position.set(3, -.5, 6);
 
         scene.add(camera);
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         renderer.setSize(contenedor.offsetWidth, contenedor.offsetHeight);
         //renderer.setClearColor(0x000000, 0);
         
