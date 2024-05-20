@@ -30,7 +30,7 @@ export default function Lentes(){
         //GLTF LOADER
         const gltfLoader = new GLTFLoader();
         gltfLoader.load(
-            '/anteojos.gltf',
+            'anteojos.gltf',
             (gltf) => {
                 gltf.scene.position.set(0, 1, 0);
                 var model = gltf.scene;

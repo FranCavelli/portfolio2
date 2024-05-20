@@ -7,5 +7,6 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: 'https://FranCavelli.github.io',
   base: 'portfolio2',
+  trailingSlash: "always",
   integrations: [tailwind(), react()]
 });
