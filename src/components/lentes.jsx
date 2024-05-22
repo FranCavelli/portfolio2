@@ -1,12 +1,10 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-export default function Lentes(){
-
+export default function Lentes() {
     useEffect(() => {
-        
         const contenedor = document.getElementById('contenedor3D');
 
         const scene = new THREE.Scene();
@@ -17,42 +15,55 @@ export default function Lentes(){
 
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         renderer.setSize(contenedor.offsetWidth, contenedor.offsetHeight);
-        //renderer.setClearColor(0x000000, 0);
-        
-        //RENDERER
+
         contenedor.appendChild(renderer.domElement);
 
-        //CONTROLS
+        // CONTROLS
         const controls = new OrbitControls(camera, renderer.domElement);
-
         controls.enableDamping = true;
+        controls.enableZoom = false; 
 
-        //GLTF LOADER
+        // GLTF LOADER
         const gltfLoader = new GLTFLoader();
+        let model;
+
         gltfLoader.load(
             'anteojos.gltf',
             (gltf) => {
                 gltf.scene.position.set(0, 1, 0);
-                var model = gltf.scene;
-                var newMaterial = new THREE.MeshNormalMaterial({flatShading: true});
+                model = gltf.scene;
+                const newMaterial = new THREE.MeshNormalMaterial({ flatShading: true });
                 model.traverse((o) => {
                     if (o.isMesh) o.material = newMaterial;
                 });
-                scene.add(gltf.scene);
+                scene.add(model);
+            },
+            undefined,
+            (error) => {
+                console.error('An error occurred loading the model:', error);
             }
         );
+
         const animate = () => {
+            requestAnimationFrame(animate);
+            if (model) {
+                model.rotation.y += 0.01; 
+            }
+
             controls.update();
             renderer.render(scene, camera);
-            requestAnimationFrame(animate);
-        }
+        };
+
         animate();
 
-        //CLEAN UP 
+        // CLEAN UP 
         return () => {
-            contenedor.removeChild(renderer.domElement);
-        }
+            if (contenedor.contains(renderer.domElement)) {
+                contenedor.removeChild(renderer.domElement);
+            }
+        };
     }, []);
+
     return (
         <div 
             id="contenedor3D"
@@ -63,7 +74,6 @@ export default function Lentes(){
                 transform: 'rotate(-45deg)',
                 zIndex: 100,
             }}
-        >
-        </div>
-    )
+        ></div>
+    );
 }
