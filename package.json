@@ -21,5 +21,8 @@
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.3",
     "three": "^0.164.1"
+  },
+  "devDependencies": {
+    "vite": "^5.2.11"
   }
 }

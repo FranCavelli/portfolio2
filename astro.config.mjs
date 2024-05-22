@@ -4,6 +4,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://FranCavelli.github.io/portfolio2',
+  site: 'https://FranCavelli.github.io',
+  base: '/portfolio2/',
   integrations: [tailwind(), react()]
 });
