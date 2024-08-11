@@ -21,7 +21,7 @@ import astro from '../assets/images/astro2.png';
             transparent
         );
         filter: drop-shadow(0 0 0.75rem #00000033);
-		animation: astro 3s infinite alternate-reverse ease-in-out;
+		animation: show 2s ease-in-out, astro 3s infinite alternate-reverse ease-in-out;
     }
     h1{
         font-family: 'LaOriental', sans-serif;
@@ -37,7 +37,7 @@ import astro from '../assets/images/astro2.png';
     }
     @font-face {
         font-family: 'LaOriental';
-        src: url('src/assets/fonts/LaOriental.otf') format('woff');
+        src: url('../src/assets/fonts/LaOriental.otf') format('woff');
     }
     @keyframes astro {
         0% {
@@ -47,6 +47,14 @@ import astro from '../assets/images/astro2.png';
         100% {
             transform: translateY(-1rem);
             transform: translateX(.5rem);
+        }
+    }
+    @keyframes show {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
         }
     }
 </style>
