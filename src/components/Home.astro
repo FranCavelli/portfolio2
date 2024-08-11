@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import astro from '../assets/images/astro.png';
+---
+<div class="xl:w-3/4 w-full h-screen relative">
+    <Image src={ astro } alt="Astro" />
+    <h1>Francisco<br>Cavelli</h1>
+</div>
+<style>
+    img {
+        width: 40rem;
+        height: auto;
+        position: absolute;
+        left: -3rem;
+        top: 5rem;
+        z-index: 100;
+        mask-image: linear-gradient(
+            black 80%,
+            transparent
+        );
+        filter: drop-shadow(0 0 0.75rem #00000033);
+    }
+    h1{
+        left: 33rem;
+        top: 17rem;
+        position: absolute;
+        font-size: 15rem;
+        font-family: 'LaOriental', sans-serif;
+        color: #000000;
+        transform: scaleY(1.7);
+        line-height: 12rem;
+        filter: drop-shadow(0 0 0.75rem #00000033);
+    }
+    @font-face {
+        font-family: 'LaOriental';
+        src: url('/fonts/LaOriental.otf') format('woff');
+    }
+</style>
