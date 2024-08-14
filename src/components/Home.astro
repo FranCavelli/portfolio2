@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import astro from '../assets/images/astro2.png';
+import astro from '../assets/images/astrogif5.gif';
 ---
-<div class="2xl:w-3/4 w-full h-screen relative flex items-center justify-center">
+<section class="2xl:w-3/4 w-full h-screen relative flex items-center justify-center">
     <div class="w-1/3 h-full flex items-center">
-        <Image src={ astro } alt="Astro" class="w-full astro"/>
+        <Image src={ astro } alt="Astro" class="w-full astro" loading="lazy" decoding="async"/>
     </div>
     <div class="w-2/3">
         <h1 class="text-9xl" id="titulo">Francisco<br>Cavelli</h1>
@@ -12,7 +12,7 @@ import astro from '../assets/images/astro2.png';
             <h2 class="text-xl ms-2"> Full stack developer</h2>
         </div>
     </div>
-</div>
+</section>
 <style>
     .astro {
         translate: 1.5rem;
