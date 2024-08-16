@@ -1,6 +1,18 @@
 ---
+import { Image } from 'astro:assets';
+import sun from '../assets/images/sun.png';
+import saturn from '../assets/images/saturn.png';
+import earth from '../assets/images/earth.png';
+import cohete from '../assets/images/cohete.png';
 
+import TimeLine from './timeline/TimeLine.astro';
 ---
-<section class="2xl:w-3/4 w-full h-full min-h-screen relative flex items-center justify-center">
-    <p>Experiences</p>
+<section class="2xl:w-3/4 w-full h-full min-h-screen relative flex items-center justify-center" id="experiences">
+    <TimeLine />
 </section>
+<style>
+    .sun{
+        top: -10rem;
+        right: -5rem;
+    }
+</style>
