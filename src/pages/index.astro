@@ -18,11 +18,17 @@ import Layout from '../layouts/Layout.astro';
 		<Contact />
 	</main>
 </Layout>
-<style>
+<style is:global>
 	html {
 		scroll-behavior: smooth;
 	}
 	main{
 		background: #FFF0E0;
 	}
+	
+    .subtitle{
+        font-family: 'LaOriental', sans-serif;
+        transform: scaleY(2);
+        color: #170009;
+    }
 </style>
