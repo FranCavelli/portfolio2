@@ -2,24 +2,28 @@
 const { title, fromDate, toDate, link, description, role } = Astro.props;
 ---
 
-<div class="mb-5">
+<div class="mb-5 shadow-lg p-4 rounded-md">
   <div class="flex items-center">
-    <i class="fa-solid fa-circle me-3"></i>
-    <div>
-      <h4>
-        {title} | {role}
-        {
-          link && (
-            <a href={link} target="_blank">
-              <i class="fa-solid fa-arrow-up-right-from-square ms-2 text-blue-500" />
-            </a>
-          )
-        }
-      </h4>
-      <p>{fromDate} - {toDate}</p>
+    <i class="fa-solid fa-star me-3"></i>
+    <div class="flex justify-between items-center w-full">
+      <div>
+        <h4 class="text-2xl font-semibold">
+          {role}
+        </h4>
+        <p class="text-lg">{title}</p>
+      </div>
+      <p class="text-sm text-gray-700">{fromDate} - {toDate}</p>
     </div>
   </div>
-  <div class="mt-1">
-    <p>{description}</p>
+  <div class="mt-2 mb-2">
+    <p class="text-base">{description}</p>
   </div>
+  {
+    link && (
+      <a href={link} target="_blank" class="text-md text-gray-800">
+        View
+        <i class="fa-solid fa-arrow-up-right-from-square " />
+      </a>
+    )
+  }
 </div>
