@@ -1,12 +1,59 @@
 ---
+import Proyect from './proyect/Proyect.astro';
+
 import { Image } from "astro:assets"
 
 import bueno from '../assets/images/bueno.png';
+
+interface Repos {
+    description: string;
+    name: string;
+    html_url: string;
+    visibility: string;
+}
+
+async function fetchRepos(): Promise<Repos[]> {
+    try {
+        const response = await fetch('https://api.github.com/users/FranCavelli/repos');
+        const data = await response.json();
+        if(data.message) {
+            console.error('API rate limit exceeded');
+            return [
+                { name: 'JSCardGame', description: 'Game card maked in Java script', html_url: 'https://github.com/FranCavelli/JSCardGame', visibility: 'public' },
+                { name: 'WS_supermarket', description: 'Super market Web scraping', html_url: 'https://github.com/FranCavelli/WS_supermarket', visibility: 'public' },
+                { name: 'Threejs-models', description: 'Maded with astro', html_url: 'https://github.com/FranCavelli/threejs-models', visibility: 'public' },
+                { name: 'LeagueStatus', description: 'LOL status Info profile with RIOT API', html_url: 'https://github.com/FranCavelli/LeagueStatus', visibility: 'public' },
+                { name: 'NextJsLeagueStatus', description: 'LOL status Info profile with RIOT API & NextJs', html_url: 'https://github.com/FranCavelli/NextJsLeagueStatus', visibility: 'public' },
+                { name: 'Portfolio2', description: 'Maded with astro', html_url: 'https://github.com/FranCavelli/portfolio2', visibility: 'public' },
+                { name: 'mandadito', description: '', html_url: 'https://github.com/FranCavelli/mandadito', visibility: 'public' },
+                { name: 'waterDelivery-v1', description: 'PHP NATIVE - 2020 - web app water delivery (First project)', html_url: 'https://github.com/FranCavelli/waterDelivery-v1', visibility: 'public' },
+                { name: 'NextKick-WebView', description: 'NEXT KICK WEB VIEW FOR ANDROID TV', html_url: 'https://github.com/FranCavelli/nextKick-WebView', visibility: 'public' },
+                { name: 'ByeWorld', description: 'Worst way to say bye world', html_url: 'https://github.com/FranCavelli/ByeWorld', visibility: 'public' },
+                { name: 'Portfolio', description: 'Maded with astro', html_url: 'https://github.com/FranCavelli/portfolio', visibility: 'public' },
+                { name: 'FranCavelli', description: 'Config files for my GitHub profile.', html_url: 'https://github.com/FranCavelli/FranCavelli', visibility: 'public' },
+            ];
+        }
+        return data;
+    } catch (error) {
+        console.error('Error fetching repos:', error);
+        return [];
+    }
+}
+
+let repos = await fetchRepos();
 ---
 <section class="2xl:w-3/4 w-full h-full min-h-screen relative flex justify-center" id="proyects">
     <div class="w-2/3 pt-20">
         <h3 class="text-4xl subtitle">Proyects</h3>
         <p class="text-xl mt-2">What I've Built</p>
-        <Image src={bueno} alt='Bueno boy' class='scale-x-[-1]'/>
+        <div class="w-full gap-2 flex justify-center flex-wrap mt-20">
+            {repos.length > 0 ? (
+                repos.map(repo => (
+                    <a href={repo.html_url} target="_blank">
+                        <Proyect name={repo.name} description={repo.description}/>
+                    </a>
+                ))
+            ) : ''}
+        </div>
     </div>
 </section>

@@ -1,0 +1,21 @@
+---
+const { name, description } = Astro.props;
+---
+
+<div class="w-40 aspect-square flex text-red-950 flex-col shadow-lg p-2 rounded-md h-40 transition-overflow relative">
+    <i class="fa-solid fa-arrow-up-right-from-square absolute right-2" style="font-size:7px;" />
+    <p class="text-center text-base font-semibold w-full m-0 mb-2">
+        {name}
+    </p>
+    <i class="fa-solid fa-folder-open text-center text-5xl mb-2"></i>
+    <p class="text-sm text-gray-900 text-wrap text-ellipsis overflow-hidden whitespace-nowrap">{description}</p>
+</div>
+<style>
+    .transition-overflow {
+        transition: all .5s;
+        &:hover{
+            height: 100%;
+            background: #0001;
+        }
+    }
+</style>
