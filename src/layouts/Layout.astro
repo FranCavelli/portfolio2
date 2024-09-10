@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+import { ViewTransitions } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -15,6 +16,7 @@ const { title } = Astro.props;
 		<script src="https://kit.fontawesome.com/09f505da7c.js" crossorigin="anonymous"></script>
 		<link rel="icon" type="image/svg+xml" href="/src/assets/images/saturn.png" />
 		<meta name="generator" content={Astro.generator} />
+		<ViewTransitions />
 		<title>{title}</title>
 	</head>
 	<body>
